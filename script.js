@@ -1,6 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate"); //querySelector returns the first element within the doc that matches selector
-var generatePassword = 0;
+var passwordLength = 0;
 var includeLowercase = "";
 var includeUppercase = "";
 var includeNumbers = "";
@@ -13,55 +13,117 @@ var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "
 "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+  
+    passwordText.value = password;
+  
+  };
+  
+ // Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
-
-console.log(lowercaseLetters.length);
-
-console.log("This is what the query selector returns:");
-console.log(generateBtn);
-
-generateBtn.addEventListener("click", writePassword); //generateBtn is defined o
-
-//generates password
+  //generates password
 function generatePassword() {
+    passwordLengthFunction();
+    includeLowercaseFunction();
+    includeUppercaseFunction();
+    includeNumbersFunction();
+    includeSpecialCharFunction();
 
-  var passwordLength = prompt("How long do you want your password to be? (Choose between 8-128 characters)");
-  if (passwordLength === " " || passwordLength === isNaN || passwordLength < 9 || passwordLength > 128) {
-    alert("You did not meet the criteria for password length, please try again.")
-    return;
-  } ;
-  console.log("This is the password length:");
-  console.log(passwordLength); //checks the value of password length
+    if(includeLowercase === "N" && includeUppercase === "N" && includeNumbers === "N" && includeSpecialChar === "N") {
+        alert("You must choose 'Y' for at least one type of character to generate password. Please try again.");
+        generatePassword();
+    }
 
-  //var passwordTypes = 
-    if (!passwordLength) {
-      return;
-    };
 
-    if (passwordLength === " " || isNaN(passwordLength)  || passwordLength < 9 || passwordLength > 128) {
-      alert("You did not meet the criteria for password length, please try again.");
-      passwordLength = prompt("How long do you want your password to be? (Choose between 8-128 characters)");
-    } ;
+};
 
-    console.log("This is the password length:");
-    console.log(passwordLength); //checks the value of password length
+ function passwordLengthFunction() {
+    passwordLength = prompt("How long do you want your password to be? (Choose between 8-128 characters)");
+  
+      if (!passwordLength) {
+        return;
+      };
+  
+      if (passwordLength === " " || isNaN(passwordLength)  || passwordLength < 9 || passwordLength > 128) {
+        alert("You did not meet the criteria for password length, please try again.");
+        passwordLengthFunction();
+      } ;
+  
+      console.log("This is the password length:");
+      console.log(passwordLength); //checks the value of password length
+  
+ }
 
-  var includeLowercase = prompt("Do you want your password to include lowercase letters? (Y or N)");
-  includeLowercase.toUpperCase();
+ function includeLowercaseFunction() {
+    includeLowercase = prompt("Do you want your password to include lowercase letters? (Y or N)");
+    includeLowercase = includeLowercase.toUpperCase();
 
-  //return password;
     if (!includeLowercase) {
       return;
     };
 
     if(includeLowercase !== "Y" && includeLowercase !== "N") {
       alert("Please enter Y or N.");
-      includeLowercase = prompt("Do you want your password to include lowercase letters? (Y or N)");
+      includeLowercaseFunction();
     };
 
     console.log("Did they choose lowercase letters?");
     console.log(includeLowercase);
-
 }
 
-} 
+function includeUppercaseFunction() {
+    includeUppercase = prompt("Do you want your password to include uppercase letters? (Y or N)");
+    includeUppercase = includeUppercase.toUpperCase();
+
+    if (!includeUppercase) {
+      return;
+    };
+
+    if(includeUppercase !== "Y" && includeUppercase !== "N") {
+      alert("Please enter Y or N.");
+      includeUppercaseFunction();
+    };
+
+    console.log("Did they choose uppercase letters?");
+    console.log(includeUppercase);
+}
+
+function includeNumbersFunction() {
+    includeNumbers = prompt("Do you want your password to include numbers? (Y or N)");
+    includeNumbers = includeNumbers.toUpperCase();
+
+    if (!includeNumbers) {
+      return;
+    };
+
+    if(includeNumbers !== "Y" && includeNumbers !== "N") {
+      alert("Please enter Y or N.");
+      includeNumbersFunction();
+    };
+
+    console.log("Did they choose numbers?");
+    console.log(includeNumbers);
+}
+
+function includeSpecialCharFunction() {
+    includeSpecialChar = prompt("Do you want your password to special characters? (Y or N)");
+    includeSpecialChar = includeSpecialChar.toUpperCase();
+
+    if (!includeSpecialChar) {
+      return;
+    };
+
+    if(includeSpecialChar !== "Y" && includeSpecialChar !== "N") {
+      alert("Please enter Y or N.");
+      includeSpecialCharFunction();
+    };
+
+    console.log("Did they choose special characters?");
+    console.log(includeSpecialChar);
+}
+
+ 
