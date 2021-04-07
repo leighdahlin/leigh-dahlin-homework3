@@ -47,34 +47,37 @@ function generatePassword() {
     }
 
     var charactersInPassword = "";
+    var countPasswordCharacters = passwordLength;
 
-    if(includeLowercase === "Y") {
-      charactersInPassword = charactersInPassword.concat(lowercaseLetters);
+    for( var i = 0; i < passwordLength; i++){
+    if(includeLowercase === "Y" && countPasswordCharacters > 0) {
+        index = lowercaseLetters.charAt(Math.floor(Math.random()*lowercaseLetters.length));
+        charactersInPassword = charactersInPassword.concat(index);
+        countPasswordCharacters -= 1;
     };
-    if(includeUppercase === "Y") {
-        charactersInPassword = charactersInPassword.concat(uppercaseLetters);
+    if(includeUppercase === "Y" && countPasswordCharacters > 0) {
+        index = uppercaseLetters.charAt(Math.floor(Math.random()*uppercaseLetters.length));
+        charactersInPassword = charactersInPassword.concat(index);
+        countPasswordCharacters -= 1;
     };
-    if(includeNumbers === "Y") {
-        charactersInPassword = charactersInPassword.concat(numbers);
+    if(includeNumbers === "Y" && countPasswordCharacters > 0) {
+        index = numbers.charAt(Math.floor(Math.random()*numbers.length));
+        charactersInPassword = charactersInPassword.concat(index);
+        countPasswordCharacters -= 1;
     };
-    if(includeSpecialChar === "Y") {
-        charactersInPassword = charactersInPassword.concat(specialCharacters);
+    if(includeSpecialChar === "Y" && countPasswordCharacters > 0) {
+        index = specialCharacters.charAt(Math.floor(Math.random()*specialCharacters.length));
+        charactersInPassword = charactersInPassword.concat(index);
+        countPasswordCharacters -= 1;
+    }
     }
 
+    console.log("This is the generated password:")
     console.log(charactersInPassword);
+    console.log("Confirm that the desired password length matches the output:")
     console.log(charactersInPassword.length);
 
-    var generatedPassword = "";
-
-    for(var i = 0; i < passwordLength; i++) {
-        index = charactersInPassword.charAt(Math.floor(Math.random()*charactersInPassword.length));
-        console.log(index);
-        generatedPassword = generatedPassword.concat(index);
-    }
-
-    console.log(generatedPassword);
-
-    return generatedPassword;
+    return charactersInPassword;
 
 };
 
