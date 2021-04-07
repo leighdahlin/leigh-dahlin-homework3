@@ -7,16 +7,10 @@ var includeLowercase = "";
 var includeUppercase = "";
 var includeNumbers = "";
 var includeSpecialChar = "";
-// var lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
-// "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-// var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
-// "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numbers = "0123456789";
 var specialCharacters = "!\"#\$%\&\'()*+,-./:;<=>?@[\\]^_`{|}~";
-// var specialCharacters = ["!","/","#","$","%", "&", "/'", "(", ")", "*", "+", "/,", "-",
-//  ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", " \\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 
 // Write password to the #password input
@@ -33,14 +27,16 @@ generateBtn.addEventListener("click", writePassword);
 resetBtn.addEventListener("click", resetButton)
 copyBtn.addEventListener("click", copyPasswordText)
 
-  //generates password
+//generates password
 function generatePassword() {
+    //runs each prompt for the types of characters
     passwordLengthFunction();
     includeLowercaseFunction();
     includeUppercaseFunction();
     includeNumbersFunction();
     includeSpecialCharFunction();
 
+    //if the users selects 'N' for all types of characters, alerts user and re-runs the generatePassword function
     if(includeLowercase === "N" && includeUppercase === "N" && includeNumbers === "N" && includeSpecialChar === "N") {
         alert("You must choose 'Y' for at least one type of character to generate password. Please try again.");
         generatePassword();
@@ -49,6 +45,7 @@ function generatePassword() {
     var charactersInPassword = "";
     var countPasswordCharacters = passwordLength;
 
+    //randomly selects character from each type selected until it has enough characters to equal the password length
     for( var i = 0; i < passwordLength; i++){
     if(includeLowercase === "Y" && countPasswordCharacters > 0) {
         index = lowercaseLetters.charAt(Math.floor(Math.random()*lowercaseLetters.length));
@@ -80,7 +77,7 @@ function generatePassword() {
     return charactersInPassword;
 
 };
-
+ //prompts for password length and performs data validation
  function passwordLengthFunction() {
     passwordLength = prompt("How long do you want your password to be? (Choose between 8-128 characters)");
   
@@ -98,6 +95,7 @@ function generatePassword() {
   
  }
 
+ //prompts users if they would like lowercase letters and performs data validation
  function includeLowercaseFunction() {
     includeLowercase = prompt("Do you want your password to include lowercase letters? (Y or N)");
     includeLowercase = includeLowercase.toUpperCase();
@@ -115,6 +113,7 @@ function generatePassword() {
     console.log(includeLowercase);
 }
 
+ //prompts users if they would like uppercase letters and performs data validation
 function includeUppercaseFunction() {
     includeUppercase = prompt("Do you want your password to include uppercase letters? (Y or N)");
     includeUppercase = includeUppercase.toUpperCase();
@@ -132,6 +131,7 @@ function includeUppercaseFunction() {
     console.log(includeUppercase);
 }
 
+ //prompts users if they would like numbers and performs data validation
 function includeNumbersFunction() {
     includeNumbers = prompt("Do you want your password to include numbers? (Y or N)");
     includeNumbers = includeNumbers.toUpperCase();
@@ -149,6 +149,7 @@ function includeNumbersFunction() {
     console.log(includeNumbers);
 }
 
+ //prompts users if they would like special characters and performs data validation
 function includeSpecialCharFunction() {
     includeSpecialChar = prompt("Do you want your password to special characters? (Y or N)");
     includeSpecialChar = includeSpecialChar.toUpperCase();
@@ -166,6 +167,7 @@ function includeSpecialCharFunction() {
     console.log(includeSpecialChar);
 }
 
+//copies password text for user
 function copyPasswordText() {
     var copyText = document.querySelector("#password");
     copyText.focus();
@@ -173,6 +175,7 @@ function copyPasswordText() {
     document.execCommand('copy');
 }
 
+//clears generated password text, "resets"
 function resetButton() {
  var resetText = document.querySelector("#password");
   
