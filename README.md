@@ -22,7 +22,7 @@ Key features of the password generator include:
 
 ## Link to Deploy
 
-![Password Generator](https://leighdahlin.github.io/leigh-dahlin-homework3/)
+[Password Generator](https://leighdahlin.github.io/leigh-dahlin-homework3/)
 
 ## Screenshot
 
