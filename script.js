@@ -1,5 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate"); //querySelector returns the first element within the doc that matches selector
+var resetBtn = document.querySelector("#reset");
+var copyBtn = document.querySelector("#copy");
 var passwordLength = 0;
 var includeLowercase = "";
 var includeUppercase = "";
@@ -26,8 +28,10 @@ function writePassword() {
   
   };
   
- // Add event listener to generate button
+ // Add event listener to all buttons
 generateBtn.addEventListener("click", writePassword);
+resetBtn.addEventListener("click", resetButton)
+copyBtn.addEventListener("click", copyPasswordText)
 
   //generates password
 function generatePassword() {
@@ -81,7 +85,7 @@ function generatePassword() {
         return;
       };
   
-      if (passwordLength === " " || isNaN(passwordLength)  || passwordLength < 9 || passwordLength > 128) {
+      if (passwordLength === " " || isNaN(passwordLength)  || passwordLength < 8 || passwordLength > 128) {
         alert("You did not meet the criteria for password length, please try again.");
         passwordLengthFunction();
       } ;
@@ -159,4 +163,16 @@ function includeSpecialCharFunction() {
     console.log(includeSpecialChar);
 }
 
+function copyPasswordText() {
+    var copyText = document.querySelector("#password");
+    copyText.focus();
+    copyText.select();
+    document.execCommand('copy');
+}
+
+function resetButton() {
+ var resetText = document.querySelector("#password");
+  
+ resetText.value = "";
+}
  
