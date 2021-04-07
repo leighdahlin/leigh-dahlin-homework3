@@ -5,13 +5,17 @@ var includeLowercase = "";
 var includeUppercase = "";
 var includeNumbers = "";
 var includeSpecialChar = "";
-var specialCharacters = ["!","/","#","$","%", "&", "/'", "(", ")", "*", "+", "/,", "-",
- ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", " \\", "]", "^", "_", "`", "{", "|", "}", "~"];
-var lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
-"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
-"P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+// var lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+// "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+var uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
+// "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numbers = "0123456789";
+var specialCharacters = "!\"#\$%\&\'()*+,-./:;<=>?@[\\]^_`{|}~";
+// var specialCharacters = ["!","/","#","$","%", "&", "/'", "(", ")", "*", "+", "/,", "-",
+//  ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", " \\", "]", "^", "_", "`", "{", "|", "}", "~"];
+
 
 // Write password to the #password input
 function writePassword() {
@@ -37,6 +41,27 @@ function generatePassword() {
         alert("You must choose 'Y' for at least one type of character to generate password. Please try again.");
         generatePassword();
     }
+
+    var charactersInPassword = "";
+
+    if(includeLowercase === "Y") {
+      charactersInPassword = charactersInPassword.concat(lowercaseLetters);
+    };
+    if(includeUppercase === "Y") {
+        charactersInPassword = charactersInPassword.concat(uppercaseLetters);
+    };
+    if(includeNumbers === "Y") {
+        charactersInPassword = charactersInPassword.concat(numbers);
+    };
+    if(includeSpecialChar === "Y") {
+        charactersInPassword = charactersInPassword.concat(specialCharacters);
+    }
+
+    console.log(charactersInPassword);
+    console.log(charactersInPassword.length);
+
+    
+
 
 
 };
