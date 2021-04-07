@@ -60,9 +60,17 @@ function generatePassword() {
     console.log(charactersInPassword);
     console.log(charactersInPassword.length);
 
-    
+    var generatedPassword = "";
 
+    for(var i = 0; i < passwordLength; i++) {
+        index = charactersInPassword.charAt(Math.floor(Math.random()*charactersInPassword.length));
+        console.log(index);
+        generatedPassword = generatedPassword.concat(index);
+    }
 
+    console.log(generatedPassword);
+
+    return generatedPassword;
 
 };
 
