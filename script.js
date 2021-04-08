@@ -31,6 +31,9 @@ copyBtn.addEventListener("click", copyPasswordText)
 function generatePassword() {
     //runs each prompt for the types of characters
     passwordLengthFunction();
+    if (!passwordLength) {
+      return;
+    };
     includeLowercaseFunction();
     includeUppercaseFunction();
     includeNumbersFunction();
@@ -79,8 +82,8 @@ function generatePassword() {
 };
  //prompts for password length and performs data validation
  function passwordLengthFunction() {
-    passwordLength = prompt("How long do you want your password to be? (Choose between 8-128 characters)");
-  
+    passwordLength = prompt("How long do you want your password to be? Choose between 8-128 characters.");
+
       if (!passwordLength) {
         return;
       };
@@ -89,6 +92,8 @@ function generatePassword() {
         alert("You did not meet the criteria for password length, please try again.");
         passwordLengthFunction();
       } ;
+
+      
   
       console.log("This is the password length:");
       console.log(passwordLength); //checks the value of password length
