@@ -132,7 +132,8 @@ button[disabled] {
 }
 
 textarea {
-  color: var(--cool-grey);
+  background-color: var(--cool-grey);
+  color: var(--cobalt-turqoise);
 }
 
 ::placeholder{

@@ -45,6 +45,11 @@ function generatePassword() {
         generatePassword();
     }
 
+    if(includeLowercase === "" && includeUppercase === "" && includeNumbers === "" && includeSpecialChar === "") {
+      alert("You must choose 'Y' for at least one type of character to generate password. Please try again.");
+      generatePassword();
+  }
+
     var charactersInPassword = "";
     var countPasswordCharacters = passwordLength;
 
@@ -82,7 +87,7 @@ function generatePassword() {
 };
  //prompts for password length and performs data validation
  function passwordLengthFunction() {
-    passwordLength = prompt("How long do you want your password to be? Choose between 8-128 characters.");
+    passwordLength = prompt("How long do you want your password to be? (Choose between 8-128 characters)");
 
       if (!passwordLength) {
         return;
@@ -92,8 +97,6 @@ function generatePassword() {
         alert("You did not meet the criteria for password length, please try again.");
         passwordLengthFunction();
       } ;
-
-      
   
       console.log("This is the password length:");
       console.log(passwordLength); //checks the value of password length
