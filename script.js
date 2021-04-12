@@ -29,6 +29,8 @@ copyBtn.addEventListener("click", copyPasswordText)
 
 //generates password
 function generatePassword() {
+
+
     //runs each prompt for the types of characters
     passwordLengthFunction();
     if (!passwordLength) {
@@ -50,8 +52,9 @@ function generatePassword() {
       generatePassword();
   }
 
-    var charactersInPassword = "";
-    var countPasswordCharacters = passwordLength;
+  //assign variables within the function
+  var charactersInPassword = "";
+  var countPasswordCharacters = passwordLength;
 
     //randomly selects character from each type selected until it has enough characters to equal the password length
     for( var i = 0; i < passwordLength; i++){
@@ -96,7 +99,7 @@ function generatePassword() {
       if (passwordLength === " " || isNaN(passwordLength)  || passwordLength < 8 || passwordLength > 128) {
         alert("You did not meet the criteria for password length, please try again.");
         passwordLengthFunction();
-      } ;
+      };
   
       console.log("This is the password length:");
       console.log(passwordLength); //checks the value of password length
